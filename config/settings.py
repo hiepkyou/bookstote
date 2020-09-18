@@ -19,7 +19,7 @@ SECRET_KEY = env("DJANGO_SECRET_KEY")
 #DEBUG = env.bool("DJANGO_DEBUG")
 DEBUG = env.bool("DJANGO_DEBUG", default=False)
 
-ALLOWED_HOSTS = ['.herokuapp.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['lit-bastion-19040.herokuapp.com', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -186,6 +186,7 @@ if ENVIRONMENT == 'production':
     SECURE_CONTENT_TYPE_NOSNIFF = True  # new
     SESSION_COOKIE_SECURE = True  # new
     CSRF_COOKIE_SECURE = True  # new
+    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')  # new
 
 import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
